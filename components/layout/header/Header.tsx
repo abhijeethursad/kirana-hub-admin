@@ -10,6 +10,8 @@ import LiveClock from "./LiveClock";
 import StoreStatusToggle from "./StoreStatusToggle";
 import NotificationDropdown from "./NotificationDropdown";
 import ProfileDropdown from "./ProfileDropdown";
+import { UserProfile } from "@/types/profile";
+
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -19,6 +21,8 @@ export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
   const [notifications, setNotifications] = useState<AppNotification[]>([]);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+    const [profile, setProfile] = useState<UserProfile>({ name: "", role: "", email: "", phone: "", location: "", bio: "", avatar: "" });
+
 
   const notificationRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
@@ -78,6 +82,18 @@ export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
     else if (item.type === 'alert') router.push('/inventory');
   };
 
+  // fatch profile data on mount
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await axios.get(`${API_URL}/profile`);
+        setProfile(res.data);
+      } catch (error) {
+        console.error("Failed to load profile", error);
+      }};
+    fetchProfile();
+  }, []);
+
   return (
     <header 
       className="
@@ -131,6 +147,7 @@ export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
             setShowNotifications(false);
           }}
           dropdownRef={profileRef}
+          profile={profile}
         />
 
       </div>

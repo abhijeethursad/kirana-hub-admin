@@ -58,7 +58,7 @@ export default function TeamStatus({ runners, historicalRunners, onAddRunner, on
       {/* Runners Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {displayedRunners.length > 0 ? displayedRunners.map((runner) => (
-          <div key={runner.id} className={`bg-white dark:bg-slate-900 p-4 rounded-2xl border ${runner.isBlocked ? 'border-red-200 dark:border-red-900/50' : 'border-slate-200 dark:border-slate-800'} shadow-sm flex items-center justify-between hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-colors group`}>
+          <div key={runner.id} className={`bg-white dark:bg-slate-800 p-4 rounded-2xl border ${runner.isBlocked ? 'border-red-200 dark:border-red-900/50' : 'border-slate-200 dark:border-slate-800'} shadow-sm flex items-center justify-between hover:border-indigo-100 dark:hover:border-indigo-900/50 transition-colors group`}>
             
             {/* Left: Avatar & Name */}
             <div className="flex items-center gap-3">

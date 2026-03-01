@@ -1,14 +1,17 @@
 import { RefObject, useState } from "react";
 import Link from "next/link";
 import { ChevronDownIcon, UserCircleIcon, Cog6ToothIcon, ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
+import { UserProfile } from "@/types/profile";
+
 
 interface Props {
   isOpen: boolean;
   onToggle: () => void;
   dropdownRef: RefObject<HTMLDivElement>;
+  profile:UserProfile;
 }
 
-export default function ProfileDropdown({ isOpen, onToggle, dropdownRef }: Props) {
+export default function ProfileDropdown({ isOpen, onToggle, dropdownRef, profile }: Props) {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleLogout = async () => {
@@ -28,15 +31,15 @@ export default function ProfileDropdown({ isOpen, onToggle, dropdownRef }: Props
       {/* ✅ Fixed Mobile Button UI */}
       <button 
         onClick={onToggle} 
-        className="flex items-center gap-2 sm:gap-3 cursor-pointer group outline-none sm:bg-slate-50 sm:dark:bg-slate-800/50 sm:p-1.5 sm:pr-3 rounded-full sm:border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-transform"
+        className="flex items-center gap-2 sm:gap-3 cursor-pointer group outline-none sm:bg-slate-50 sm:dark:bg-slate-700/50 sm:p-1.5 sm:pr-3 rounded-full sm:border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-transform"
       >
         <img 
-          src="https://randomuser.me/api/portraits/men/32.jpg"
-          alt="Admin" 
+          src={profile.avatar || "https://randomuser.me/api/portraits/men/32.jpg"}
+          alt="Store Owner Avatar" 
           className="h-9 w-9 sm:h-8 sm:w-8 rounded-full object-cover border-2 border-slate-200 sm:border-white dark:border-slate-800 shadow-sm transition-transform group-hover:scale-105" 
         />
         <div className="hidden sm:block text-left">
-          <p className="text-xs font-bold text-slate-700 dark:text-white">Admin User</p>
+          <p className="text-xs font-bold text-slate-700 dark:text-white">{profile.name}</p>
         </div>
         <ChevronDownIcon className={`hidden sm:block h-4 w-4 text-slate-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
@@ -44,8 +47,8 @@ export default function ProfileDropdown({ isOpen, onToggle, dropdownRef }: Props
       {/* Dropdown Panel */}
       <div className={`absolute right-0 mt-3 w-56 bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden transition-all duration-200 origin-top-right z-50 ${isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}>
         <div className="p-4 border-b border-slate-100 dark:border-slate-700 sm:hidden">
-          <p className="font-bold text-slate-900 dark:text-white">Admin User</p>
-          <p className="text-xs text-slate-500">Super Admin</p>
+          <p className="font-bold text-slate-900 dark:text-white">{profile.name}</p>
+          <p className="text-xs text-slate-500">{profile.role}</p>
         </div>
         
         <div className="p-2 space-y-1">

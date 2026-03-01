@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { CheckBadgeIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { UsersIcon, CurrencyRupeeIcon } from "@heroicons/react/24/outline";
 
 // --- Components ---
 import { Customer } from "@/types/customer";
@@ -133,21 +134,58 @@ export default function CustomersPage() {
     <div className="space-y-6">
       
       {/* Header & Stats */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="flex flex-col md:flex-row  justify-between gap-4">
         <div>
           <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">Customers</h1>
           <p className="text-slate-500 dark:text-slate-400 mt-2">Manage your customer relationships and track credits.</p>
         </div>
         
-        {/* Quick Stats */}
-        <div className="flex gap-4">
-          <div className="px-5 py-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-            <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">Total Customers</p>
-            <p className="text-2xl font-extrabold text-slate-900 dark:text-white mt-1">{loading ? "-" : customers.length}</p>
+
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full sm:w-fit ">
+          {/* Card 1: Total Customers */}
+          <div className="relative overflow-hidden p-4 sm:p-5 bg-white dark:bg-slate-800/50 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-white/5 shadow-sm flex flex-col justify-center">
+            {/* Subtle ambient glow effect */}
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-indigo-500/10 dark:bg-indigo-500/5 blur-2xl rounded-full pointer-events-none"></div>
+            
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+              <div className="inline-flex w-max p-1.5 sm:p-2 bg-indigo-50 dark:bg-indigo-500/10 rounded-lg sm:rounded-xl border border-indigo-100 dark:border-indigo-500/20 shadow-inner dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+                <UsersIcon className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+              </div>
+              <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 font-extrabold uppercase tracking-wider">
+                Total Customers
+              </p>
+            </div>
+            
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              {loading ? (
+                <span className="animate-pulse bg-slate-200 dark:bg-slate-700 text-transparent rounded-md w-12 inline-block h-8">00</span>
+              ) : (
+                customers.length
+              )}
+            </div>
           </div>
-          <div className="px-5 py-3 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
-            <p className="text-xs text-red-500 uppercase font-bold tracking-wider">Total Credit</p>
-            <p className="text-2xl font-extrabold text-red-600 mt-1">₹{loading ? "-" : totalCredit.toLocaleString()}</p>
+
+          {/* Card 2: Total Credit (Udhaar) */}
+          <div className="relative overflow-hidden p-4 sm:p-5 bg-white dark:bg-slate-800/50 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-white/5 shadow-sm flex flex-col justify-center">
+            {/* Subtle ambient glow effect */}
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-red-500/10 dark:bg-red-500/5 blur-2xl rounded-full pointer-events-none"></div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+              <div className="inline-flex w-max p-1.5 sm:p-2 bg-red-50 dark:bg-red-500/10 rounded-lg sm:rounded-xl border border-red-100 dark:border-red-500/20 shadow-inner dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]">
+                <CurrencyRupeeIcon className="h-4 w-4 text-red-600 dark:text-red-400" />
+              </div>
+              <p className="text-[10px] sm:text-xs text-red-500 dark:text-red-400 font-extrabold uppercase tracking-wider">
+                Total Credit
+              </p>
+            </div>
+    
+            <div className="text-2xl sm:text-3xl font-extrabold text-red-600 dark:text-red-400 tracking-tight">
+              {loading ? (
+                <span className="animate-pulse bg-red-100 dark:bg-red-900/40 text-transparent rounded-md w-20 inline-block h-8">0000</span>
+              ) : (
+                `₹${totalCredit.toLocaleString()}`
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -156,7 +194,7 @@ export default function CustomersPage() {
       {loading ? (
          <CustomerSkeleton />
       ) : (
-         <div className="relative bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
+         <div className="relative bg-white dark:bg-slate-900 rounded-3xl md:border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col transform-gpu">
             {/* Toast Notification */}
             <div className={`fixed bottom-6 right-6 z-50 transition-all duration-300 transform ${toast.show ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0 pointer-events-none'}`}>
               <div className={`flex items-center gap-3 px-5 py-3 rounded-2xl shadow-xl border ${toast.type === 'success' ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-transparent' : 'bg-red-500 text-white border-red-600'}`}>

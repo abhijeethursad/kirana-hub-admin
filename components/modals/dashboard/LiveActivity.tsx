@@ -6,7 +6,7 @@ export default function LiveActivity({ stats }: DashboardProps) {
   return (
     <div>
       <h2 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">Live Activity</h2>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <KpiCard 
           title="Today's Orders" 
           value={stats.todaysOrders.toString()} 

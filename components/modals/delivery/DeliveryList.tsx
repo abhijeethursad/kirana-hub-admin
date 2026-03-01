@@ -26,7 +26,7 @@ export default function DeliveryList({ deliveries, runners, activeTab, markDeliv
         const runner = runners.find(r => r.id === delivery.runnerId);
         
         return (
-          <div key={delivery.id} className="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-200 dark:hover:border-indigo-900 transition-colors group animate-in fade-in slide-in-from-bottom-2">
+          <div key={delivery.id} className="bg-white dark:bg-slate-800 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm hover:border-indigo-200 dark:hover:border-indigo-900 transition-colors group animate-in fade-in slide-in-from-bottom-2">
             {/* Card Header */}
             <div className="flex justify-between items-start mb-4">
               <div>
@@ -49,7 +49,7 @@ export default function DeliveryList({ deliveries, runners, activeTab, markDeliv
             </div>
 
             {/* Location */}
-            <div className="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-2xl flex gap-3 mb-4">
+            <div className="bg-slate-50 dark:bg-slate-900/50 p-3 rounded-2xl flex gap-3 mb-4">
               <MapPinIcon className="h-5 w-5 text-indigo-500 flex-shrink-0" />
               <p className="text-sm text-slate-600 dark:text-slate-300 leading-snug">{delivery.address}</p>
             </div>

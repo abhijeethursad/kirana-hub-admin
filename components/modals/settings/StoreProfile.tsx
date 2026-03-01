@@ -1,9 +1,11 @@
 import { useRef } from "react";
 import { BuildingStorefrontIcon, PhotoIcon, MapPinIcon, PhoneIcon, EnvelopeIcon, ArrowPathIcon, CheckBadgeIcon } from "@heroicons/react/24/outline";
 import { StoreSettings } from "@/types/settings";
+import { UserProfile } from "@/types/profile";
 
 interface StoreProfileProps {
   store: StoreSettings;
+  profile:UserProfile;
   setStore: (val: StoreSettings) => void;
   handlePhotoUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isUploadingLogo: boolean;
@@ -13,7 +15,7 @@ interface StoreProfileProps {
   isDirty: boolean;             // ✅ Determines if button is visible
 }
 
-export default function StoreProfile({ store, setStore, handlePhotoUpload, isUploadingLogo, onToggleStatus, onSave, isSaving, isDirty }: StoreProfileProps) {
+export default function StoreProfile({ profile, store, setStore, handlePhotoUpload, isUploadingLogo, onToggleStatus, onSave, isSaving, isDirty }: StoreProfileProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // 🚀 Standardized Premium Input Class (Removed color transitions)
@@ -47,7 +49,7 @@ export default function StoreProfile({ store, setStore, handlePhotoUpload, isUpl
       <div className="flex flex-col sm:flex-row gap-6 mb-6">
         
         {/* 🚀 Recessed Logo Upload Well */}
-        <div className="shrink-0">
+        <div className="shrink-0 flex sm:items-center justify-center">
           <input type="file" ref={fileInputRef} onChange={handlePhotoUpload} className="hidden" accept="image/*" disabled={isUploadingLogo} />
           <div 
             onClick={() => !isUploadingLogo && fileInputRef.current?.click()} 
@@ -73,8 +75,8 @@ export default function StoreProfile({ store, setStore, handlePhotoUpload, isUpl
             <input type="text" value={store.name} onChange={(e) => setStore({...store, name: e.target.value})} className={`${inputClass} px-4`} />
           </div>
           <div className="group/input">
-            <label className={labelClass}>Owner Name</label>
-            <input type="text" value={store.owner} onChange={(e) => setStore({...store, owner: e.target.value})} className={`${inputClass} px-4`} />
+            <label  className={labelClass} >Owner Name</label>
+            <input disabled type="text" value={profile.name} onChange={(e) => setStore({...store, owner: e.target.value})} className={`${inputClass} px-4 cursor-not-allowed`} />
           </div>
         </div>
       </div>
@@ -84,21 +86,21 @@ export default function StoreProfile({ store, setStore, handlePhotoUpload, isUpl
           <label className={labelClass}>Store Address</label>
           <div className="relative">
             <MapPinIcon className="h-5 w-5 absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 group-focus-within/input:text-indigo-500" />
-            <input type="text" value={store.address} onChange={(e) => setStore({...store, address: e.target.value})} className={`${inputClass} pl-12 pr-4`} />
+            <input type="text" value={profile.location || store.address} onChange={(e) => setStore({...store, address: e.target.value})} className={`${inputClass} pl-12 pr-4`} />
           </div>
         </div>
         <div className="group/input">
           <label className={labelClass}>Phone Number</label>
           <div className="relative">
             <PhoneIcon className="h-5 w-5 absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 group-focus-within/input:text-indigo-500" />
-            <input type="text" value={store.phone} onChange={(e) => setStore({...store, phone: e.target.value})} className={`${inputClass} pl-12 pr-4`} />
+            <input type="text" value={profile.phone || store.phone} onChange={(e) => setStore({...store, phone: e.target.value})} className={`${inputClass} pl-12 pr-4`} />
           </div>
         </div>
         <div className="group/input">
           <label className={labelClass}>Email Address</label>
           <div className="relative">
             <EnvelopeIcon className="h-5 w-5 absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 group-focus-within/input:text-indigo-500" />
-            <input type="email" value={store.email} onChange={(e) => setStore({...store, email: e.target.value})} className={`${inputClass} pl-12 pr-4`} />
+            <input type="email" value={profile.email || store.email} onChange={(e) => setStore({...store, email: e.target.value})} className={`${inputClass} pl-12 pr-4`} />
           </div>
         </div>
       </div>

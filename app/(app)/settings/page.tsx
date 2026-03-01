@@ -11,6 +11,7 @@ import SettingsSkeleton from "@/components/Skeletons/SettingsSkeleton";
 import StoreProfile from "@/components/modals/settings/StoreProfile";
 import NotificationSettings from "@/components/modals/settings/NotificationSettings";
 import PreferencesSettings from "@/components/modals/settings/PreferencesSettings";
+import { UserProfile } from "@/types/profile";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
@@ -22,9 +23,11 @@ export default function SettingsPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [logoutLoading, setLogoutLoading] = useState(false);
   const [isUploadingLogo, setIsUploadingLogo] = useState(false);
+
   
   const [originalStore, setOriginalStore] = useState<StoreSettings | null>(null);
   const [store, setStore] = useState<StoreSettings>({ name: "", owner: "", phone: "", address: "", email: "", isOpen: true, logo: null });
+  const [profile, setProfile] = useState<UserProfile>({ name: "", role: "", email: "", phone: "", location: "", bio: "", avatar: "" });
   const [toggles, setToggles] = useState<NotificationToggles>({ orderAlerts: true, stockAlerts: true, whatsappUpdates: false });
   const [toast, setToast] = useState({ show: false, msg: "", type: "success" as "success" | "error" });
 
@@ -47,6 +50,12 @@ export default function SettingsPage() {
           setOriginalStore(res.data.store); 
           setToggles(res.data.toggles);
         }
+
+        // Fetch profile data (assuming it's a separate endpoint)
+        const profileRes = await axios.get(`${API_URL}/profile`);
+        setProfile(profileRes.data);
+
+
       } catch (err) {
         showToast("Failed to load settings from server", "error");
       } finally {
@@ -172,7 +181,8 @@ export default function SettingsPage() {
             {/* Left Column */}
             <div className="space-y-6 lg:col-span-2">
               <StoreProfile 
-                store={store} 
+                store={store}
+                profile={profile} 
                 setStore={setStore} 
                 handlePhotoUpload={handleLogoUpload} 
                 isUploadingLogo={isUploadingLogo}
@@ -202,7 +212,7 @@ export default function SettingsPage() {
             </div>
 
             {/* Right Column */}
-            <div className="space-y-6">
+            <div className="space-y-6 transform-gpu">
               <NotificationSettings toggles={toggles} onToggle={handleToggle} />
               <PreferencesSettings />
 

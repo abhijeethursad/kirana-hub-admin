@@ -1,13 +1,17 @@
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import NextTopLoader from 'nextjs-toploader';
-import { Metadata } from "next";
+import type { Metadata } from 'next'
+import type { Viewport } from 'next'
 
 export const metadata: Metadata = {
   title: "Kirana Hub",
   description: "Admin Dashboard",
-  colorScheme: "dark light",
 };
+
+export const viewport: Viewport = {
+  colorScheme: 'dark light'
+}
 
 export default function RootLayout({
   children,

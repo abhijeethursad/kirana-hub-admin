@@ -17,7 +17,7 @@ export default function ProfileStats() {
       `}</style>
 
       {/* First Stat Card (Container is static, content animates) */}
-      <div className="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md group">
+      <div className="bg-white dark:bg-slate-800 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md group">
         
         {/* Inner elements staggering in (100ms -> 150ms -> 200ms) */}
         <div 
@@ -43,7 +43,7 @@ export default function ProfileStats() {
       </div>
       
       {/* Second Stat Card (Container is static, content animates) */}
-      <div className="bg-white dark:bg-slate-900 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md group">
+      <div className="bg-white dark:bg-slate-800 p-5 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-md group">
         
         {/* Inner elements staggering in (250ms -> 300ms -> 350ms) */}
         <div 

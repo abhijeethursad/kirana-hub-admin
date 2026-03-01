@@ -1,3 +1,5 @@
+import{ UserProfile } from "./profile";
+
 export interface StoreSettings {
   name: string;
   owner: string;

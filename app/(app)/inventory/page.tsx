@@ -35,7 +35,7 @@ export default function InventoryPage() {
   const [isUploading, setIsUploading] = useState(false);
 
   // --- FORM STATE ---
-  const initialFormState = { id: "0", name: "", category: "General", price: 0, stock: 0, unit: "pc", images: [] };
+  const initialFormState = { id: "0", name: "", category: "General", price: 0, stock: 0, unit: "", images: [] };
   const [formData, setFormData] = useState<Product>(initialFormState);
 
   // --- TOAST STATE ---
@@ -197,7 +197,7 @@ export default function InventoryPage() {
         </div>
       ) : (
         // Real Container
-        <div className="relative bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
+        <div className="relative bg-white dark:bg-slate-900 rounded-3xl md:border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col transform-gpu">
           <InventoryHeader 
             search={search} 
             setSearch={setSearch} 

@@ -13,7 +13,7 @@ const KpiCard = ({ title, value, subtext, icon, variant = 'white' }: KpiCardProp
   // 1. Define the styles for each color variant
   const variants = {
     // White card: Dark text in light mode, White text in dark mode
-    white: "bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700",
+    white: "bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700 ",
     
     // Colorful cards: Always white text
     pink: "bg-gradient-to-br from-pink-500 to-rose-500 text-white shadow-lg shadow-pink-500/20",
@@ -26,7 +26,7 @@ const KpiCard = ({ title, value, subtext, icon, variant = 'white' }: KpiCardProp
     <div className={`relative overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 ${variants[variant]}`}>
       
       {/* Content Layer */}
-      <div className="relative z-10">
+      <div className="relative z-10 ">
         <h3 className={`text-sm font-medium ${variant === 'white' ? 'text-slate-500 dark:text-slate-400' : 'text-white/90'}`}>
           {title}
         </h3>

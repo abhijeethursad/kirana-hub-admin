@@ -32,7 +32,7 @@ export default function NotificationDropdown({ notifications, isOpen, onToggle, 
       <div className={`fixed left-4 right-4 top-20 sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-3 sm:w-96 bg-white dark:bg-slate-800 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden transition-all duration-300 origin-top-right z-50 ${isOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'}`}>
         
         {/* Header */}
-        <div className="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+        <div className=" p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
           <h3 className="font-bold text-slate-900 dark:text-white">Notifications</h3>
           {unreadCount > 0 ? (
             <span className="text-[10px] uppercase tracking-wider font-extrabold text-indigo-600 bg-indigo-100 dark:bg-indigo-500/20 dark:text-indigo-300 px-2 py-1 rounded-lg">

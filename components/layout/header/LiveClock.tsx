@@ -23,17 +23,17 @@ export default function LiveClock() {
   return (
     <div className="hidden md:flex items-center gap-4 text-slate-600 dark:text-slate-300">
       <div className="flex flex-col">
-        <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
-          {getGreeting()}, Admin
+        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+          {getGreeting()}, User
         </span>
         <div className="flex items-center gap-3 mt-0.5">
-          <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800/50 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700">
+          <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-700/50 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700">
             <CalendarIcon className="h-3.5 w-3.5 text-indigo-500" />
             <span className="text-xs font-bold">
               {time.toLocaleDateString('en-IN', { weekday: 'short', month: 'short', day: 'numeric' })}
             </span>
           </div>
-          <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800/50 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700">
+          <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-700/50 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700">
             <ClockIcon className="h-3.5 w-3.5 text-orange-500" />
             <span className="text-xs font-bold tabular-nums">
               {time.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true })}

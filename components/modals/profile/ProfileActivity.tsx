@@ -9,7 +9,7 @@ const ACTIVITY_LOGS = [
 
 export default function ProfileActivity() {
   return (
-    <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
+    <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
       
       {/* 🚀 Custom Staggered Entrance Animation */}
       <style>{`

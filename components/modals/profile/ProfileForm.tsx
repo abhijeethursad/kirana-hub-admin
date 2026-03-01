@@ -11,21 +11,21 @@ export default function ProfileForm({ user, setUser, isEditing }: Props) {
   // 🚀 UPGRADED: Added shadow-inner to make inputs look like physical recessed boxes when editing
   const inputBaseClass = `w-full pl-12 pr-4 py-3 rounded-xl border transition-all duration-300 outline-none ${
     isEditing 
-      ? 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-[inset_0_2px_6px_rgba(0,0,0,0.02)] focus:shadow-[inset_0_2px_4px_rgba(0,0,0,0.0)] focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-900 dark:text-white' 
-      : 'border-transparent bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300'
+      ? 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 shadow-[inset_0_2px_6px_rgba(0,0,0,0.02)] focus:shadow-[inset_0_2px_4px_rgba(0,0,0,0.0)] focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-900 dark:text-white' 
+      : 'border-transparent bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300'
   }`;
 
   const textAreaClass = `w-full p-4 rounded-xl border transition-all duration-300 outline-none resize-none leading-relaxed ${
     isEditing 
-      ? 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-[inset_0_2px_6px_rgba(0,0,0,0.02)] focus:shadow-[inset_0_2px_4px_rgba(0,0,0,0.0)] focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-900 dark:text-white' 
-      : 'border-transparent bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-300'
+      ? 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 shadow-[inset_0_2px_6px_rgba(0,0,0,0.02)] focus:shadow-[inset_0_2px_4px_rgba(0,0,0,0.0)] focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-900 dark:text-white' 
+      : 'border-transparent bg-slate-50 dark:bg-slate-700/50 text-slate-600 dark:text-slate-300'
   }`;
 
   const MAX_BIO_LENGTH = 150;
   const isBioOverLimit = (user.bio?.length || 0) > MAX_BIO_LENGTH;
 
   return (
-    <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 sm:p-8 transition-all duration-300">
+    <div className="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 sm:p-8 transition-all duration-300">
       
       {/* 🚀 Custom Physics Animations */}
       <style>{`
@@ -67,7 +67,7 @@ export default function ProfileForm({ user, setUser, isEditing }: Props) {
           <label className="text-[10px] font-extrabold text-slate-500 uppercase tracking-wider">Role</label>
           <div className="relative">
             <CheckBadgeIcon className="absolute left-4 top-3.5 h-5 w-5 text-slate-400" />
-            <input type="text" disabled value={user.role} className="w-full pl-12 pr-4 py-3 rounded-xl border border-transparent bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 cursor-not-allowed font-medium" />
+            <input type="text" disabled value={user.role} className="w-full pl-12 pr-4 py-3 rounded-xl border border-transparent bg-slate-50 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 cursor-not-allowed font-medium" />
           </div>
         </div>
 
