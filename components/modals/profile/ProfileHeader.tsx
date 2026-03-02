@@ -201,9 +201,9 @@ export default function ProfileHeader({ user, setUser, isEditing, setIsEditing, 
 
       {/* 🚀 FIXED CROP MODAL: Light/Dark Support & Responsive Vertical Slider */}
       {imageSrc && (
-        <div className="fixed inset-0 z-[200] flex sm:items-center sm:justify-center bg-slate-900/60 dark:bg-black/80 backdrop-blur-md animate-in fade-in duration-200 sm:p-6">
+        <div className="fixed inset-0 z-[200] flex sm:items-center sm:justify-center bg-slate-900/60 dark:bg-black/80 backdrop-blur-md animate-in fade-in duration-200 sm:p-6 h-full">
           
-          <div className="bg-white dark:bg-slate-800 w-full h-[100dvh] sm:h-[650px] sm:max-h-[85vh] sm:w-[600px] rounded-none sm:rounded-[2rem] shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 sm:border border-slate-200 dark:border-white/10">
+          <div className="bg-white dark:bg-slate-800 w-full h-dvh sm:h-162.5 sm:max-h-[85vh] sm:w-150 rounded-none sm:rounded-4xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 sm:border border-slate-200 dark:border-white/10">
             
             {/* Theme-Aware Header */}
             <div className="px-4 py-3 flex justify-between items-center shrink-0 z-10 text-slate-800 dark:text-white border-b border-slate-100 sm:border-transparent dark:border-white/5 pt-safe">
