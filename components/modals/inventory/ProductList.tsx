@@ -17,7 +17,7 @@ export default function ProductList({ products, onEdit, onDelete }: ProductListP
   };
 
   return (
-    <div className="flex-1 bg-slate-50 dark:bg-slate-900/50 overflow-y-auto backdrop-blur-md transform-gpu will-change-scroll overscroll-contain custom-scrollbar border-t border-slate-200/50 dark:border-white/5">
+    <div className="flex-1 bg-slate-50 dark:bg-slate-900/50 overflow-y-auto backdrop-blur-md transform-gpu will-change-scroll custom-scrollbar border-t border-slate-200/50 dark:border-white/5">
       
       {/* 📱 MOBILE & 💊 TABLET CARD VIEW (Grid System) */}
       {/* 🚀 Shifted to lg:hidden so iPads get the grid, and added md:grid-cols-2 */}

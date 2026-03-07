@@ -1,19 +1,26 @@
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers"; // 🚀 Import the cookies helper
 
 export async function POST() {
-  // Create a response
-  const response = NextResponse.json({
-    message: "Logged out successfully",
-    success: true,
-  });
+  try {
+    // 1. Await the cookie store (Required in Next.js 15+)
+    const cookieStore = await cookies();
 
-  // 💣 FORCE DELETE THE COOKIE
-  // We set the cookie to an empty string and expire it immediately.
-  response.cookies.set("token", "", {
-    httpOnly: true,
-    expires: new Date(0), // Set date to 1970 (expired)
-    path: "/", // Ensure it clears for the whole app
-  });
+    // 2. 💣 FORCE DELETE THE COOKIE
+    // This native method safely completely wipes the token and handles the expiration automatically
+    cookieStore.delete("token");
 
-  return response;
+    // 3. Return the success response
+    return NextResponse.json({
+      success: true,
+      message: "Logged out successfully",
+    }, { status: 200 });
+    
+  } catch (error) {
+    console.error("Logout Error:", error);
+    return NextResponse.json({ 
+      success: false, 
+      message: "Failed to logout properly" 
+    }, { status: 500 });
+  }
 }

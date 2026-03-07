@@ -20,8 +20,7 @@ export default function AdminLayout({
         
         <Header onMenuClick={() => setSidebarOpen(true)} />
         
-        {/* 🚀 UPGRADED: Removed transition-colors and bg-transparent to stop CPU lag */}
-        <main className="flex-1 overflow-y-auto p-4 md:p-8">
+        <main className="flex-1 overflow-y-auto p-4 pb-20 md:p-8">
           {children}
         </main>
       </div>

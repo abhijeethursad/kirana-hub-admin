@@ -82,7 +82,7 @@ export default function DashboardPage() {
   if (loading || !stats) return <DashboardSkeleton />;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* 1. Page Header */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>

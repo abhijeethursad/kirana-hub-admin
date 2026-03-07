@@ -28,22 +28,19 @@ export default function LoginPage() {
     setError("");
 
     try {
-      // 1. Call the API
-      // The API will automatically set the 'httpOnly' cookie on success
+      // 1. Call the Internal Next.js API
       const response = await axios.post(API_ROUTES.AUTH.LOGIN, formData);
       const { success, user, message } = response.data;
 
       if (success) {
-        // 2. Optional: Store non-sensitive User Info for UI (Name/Avatar)
-        // We DO NOT store the token here anymore. It's in the cookie.
+        // 2. Store non-sensitive User Info for UI (Name/Avatar)
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
         }
 
         // 3. Redirect to Dashboard
-        // The Middleware will now see the cookie and let us in.
         router.push("/dashboard");
-        router.refresh(); // Ensure the new cookie is recognized
+        router.refresh(); 
       } else {
         setError(message || "Login failed.");
       }
@@ -134,7 +131,7 @@ export default function LoginPage() {
                  <button 
                    type="button"
                    onClick={() => setShowPassword(!showPassword)}
-                   className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 transition-colors"
+                   className="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-zinc-200 transition-colors outline-none"
                  >
                    {showPassword ? <EyeSlashIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />}
                  </button>
@@ -164,7 +161,7 @@ export default function LoginPage() {
             <button 
               type="submit" 
               disabled={isLoading}
-              className="w-full py-4 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-black font-bold text-lg hover:opacity-90 transition-all hover:scale-[1.01] active:scale-[0.98] shadow-xl flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full py-4 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-black font-bold text-lg hover:opacity-90 transition-all hover:scale-[1.01] active:scale-[0.98] shadow-xl flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed outline-none"
             >
               {isLoading ? (
                  <div className="h-5 w-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
@@ -210,11 +207,11 @@ export default function LoginPage() {
                  <span className="text-xs font-medium text-white tracking-wide uppercase">System Operational</span>
                </div>
                <h2 className="text-4xl font-bold text-white leading-tight mb-4">
-                  Manage your entire retail empire <br/>
-                  <span className="text-indigo-400">from one dashboard.</span>
+                 Manage your entire retail empire <br/>
+                 <span className="text-indigo-400">from one dashboard.</span>
                </h2>
                <p className="text-slate-300 text-lg">
-                  Real-time analytics, inventory management, and instant order processing.
+                 Real-time analytics, inventory management, and instant order processing.
                </p>
             </div>
          </div>

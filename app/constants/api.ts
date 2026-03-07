@@ -1,10 +1,14 @@
-export const API_BASE_URL = process.env.NEXT_Login_PUBLIC_API_URL || '/api';
+// 🚀 This points to your local JSON Server (e.g., http://localhost:3001)
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+
+// 🚀 This points to your internal Next.js Server (for secure cookies)
+export const INTERNAL_API_URL = '/api';
 
 export const API_ROUTES = {
   AUTH: {
-    LOGIN: `${API_BASE_URL}/login`,
-    LOGOUT: `${API_BASE_URL}/logout`,
-    FORGOT_PASSWORD: `${API_BASE_URL}/forgot-password`,
+    LOGIN: `${INTERNAL_API_URL}/login`, // Hits app/api/login/route.ts
+    LOGOUT: `${INTERNAL_API_URL}/logout`,
+    FORGOT_PASSWORD: `${INTERNAL_API_URL}/forgot-password`,
   },
   DASHBOARD: {
     STATS: `${API_BASE_URL}/dashboard/stats`,

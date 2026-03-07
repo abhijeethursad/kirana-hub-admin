@@ -155,7 +155,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="space-y-6 ">
+    <div className="space-y-6">
       
       {/* Toast */}
       <div className={`fixed bottom-6 right-6 z-50 transition-all duration-300 transform ${toast.show ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0 pointer-events-none'}`}>

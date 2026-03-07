@@ -41,7 +41,7 @@ export default function RootLayout({
       </head>
       
       {/* 🚀 UPGRADED: Added hard background colors and longer transition duration */}
-      <body className="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased overflow-hidden selection:bg-indigo-500/30 selection:text-indigo-900 dark:selection:text-white">        
+      <body className="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased overflow-hidden selection:bg-indigo-500/30 selection:text-indigo-900 dark:selection:text-white ">        
         <ThemeProvider>
             <NextTopLoader 
               color="transparent" 

@@ -5,8 +5,7 @@ import { jwtVerify } from 'jose';
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   
-  // ✅ UPDATED: Added '/' to public paths
-  // Now '/' (Landing Page) and '/login' are visible to everyone
+  // Define public paths (Landing Page and Login)
   const isPublicPath = path === '/login' || path === '/' ;
 
   // 1. Get the token from the cookie
@@ -20,6 +19,7 @@ export async function middleware(request: NextRequest) {
   let isValid = false;
   if (token) {
     try {
+      // jose checks the signature and expiration time automatically
       await jwtVerify(token, secret);
       isValid = true;
     } catch (error) {
@@ -28,14 +28,11 @@ export async function middleware(request: NextRequest) {
   }
 
   // 3. Logic: Protect Private Routes
-  // If user is NOT logged in and trying to access a private page (like /dashboard)
   if (!isPublicPath && !isValid) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  // 4. Logic: Redirect Logged-In Users ONLY from Login page
-  // If user IS logged in, we only kick them out of '/login'.
-  // We let them see the Landing Page ('/') if they want.
+  // 4. Logic: Redirect Logged-In Users away from Login page
   if (path === '/login' && isValid) {
     return NextResponse.redirect(new URL('/dashboard', request.url));
   }
@@ -46,14 +43,13 @@ export async function middleware(request: NextRequest) {
 // 5. Matcher Configuration
 export const config = {
   matcher: [
-    '/',
-    '/login',
-    '/dashboard/:path*',
-    '/orders/:path*',
-    '/inventory/:path*',
-    '/customers/:path*',
-    '/delivery/:path*',
-    '/settings/:path*',
-    '/profile/:path*'
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ]
 }

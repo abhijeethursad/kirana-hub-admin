@@ -134,7 +134,7 @@ export default function ProfileHeader({ user, setUser, isEditing, setIsEditing, 
           @keyframes popIn { 0% { opacity: 0; transform: scale(0.8) translateY(10px); } 60% { transform: scale(1.1) translateY(-2px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
           .animate-slide-up { animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
           .animate-slide-up-delayed { opacity: 0; animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; animation-delay: 0.08s; }
-          .animate-pop-in { animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+          .animate-pop-in { animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
           .animate-stagger { opacity: 0; animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         `}</style>
 
@@ -161,7 +161,7 @@ export default function ProfileHeader({ user, setUser, isEditing, setIsEditing, 
             <button 
               onClick={handleAvatarClick} 
               disabled={isUploadingAvatar}
-              className="absolute bottom-1 right-1 p-2.5 bg-indigo-600/90 backdrop-blur-md text-white rounded-full hover:bg-indigo-700 shadow-xl shadow-indigo-500/30 active:scale-95 border-2 border-white dark:border-slate-900 animate-pop-in z-10 disabled:opacity-50 outline-none"
+              className="absolute bottom-1 right-1 p-2.5 bg-indigo-600/90 backdrop-blur-md text-white rounded-full hover:bg-indigo-700 shadow-xl shadow-indigo-500/30 active:scale-85 border-2 border-white dark:border-slate-900 animate-pop-in z-10 disabled:opacity-50 outline-none"
             >
               <CameraIcon className="h-4 w-4" />
             </button>
