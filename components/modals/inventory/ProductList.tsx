@@ -95,7 +95,7 @@ export default function ProductList({ products, onEdit, onDelete }: ProductListP
               products.map((product) => {
                 const status = getStockStatus(product.stock);
                 return (
-                  <tr key={product.id} className="group hover:bg-slate-50 dark:hover:bg-slate-800/40">
+                  <tr key={product.id} className="group hover:bg-slate-50 dark:hover:bg-slate-700/40">
                     <td className="p-4 pl-6">
                       <div className="flex items-center gap-4">
                         <div className="relative h-12 w-12 rounded-xl bg-slate-100 dark:bg-slate-800 overflow-hidden border border-slate-200 dark:border-white/5 shrink-0 shadow-sm">

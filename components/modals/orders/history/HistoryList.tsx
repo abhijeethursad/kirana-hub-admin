@@ -1,10 +1,13 @@
-import { EyeIcon, TrashIcon, XCircleIcon, CheckBadgeIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
+import { EyeIcon, TrashIcon, XCircleIcon, PrinterIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 import { Order } from "@/types/order";
+
+// 🚀 Import our new decoupled premium print engine
+import { printInvoice } from "./printInvoice"; 
 
 interface HistoryListProps {
   orders: Order[];
   onDelete: (id: string | number) => void;
-  onView: () => void;
+  onView: (id: string | number) => void; 
 }
 
 export default function HistoryList({ orders, onDelete, onView }: HistoryListProps) {
@@ -50,7 +53,6 @@ export default function HistoryList({ orders, onDelete, onView }: HistoryListPro
                  </div>
               </div>
 
-              {/* Removed Items Section */}
               {order.removedItems && order.removedItems.length > 0 && (
                  <div className="mb-4 px-3 py-2.5 bg-red-50 dark:bg-red-500/5 rounded-xl border border-red-100 dark:border-red-500/10">
                     <p className="text-[10px] text-red-600 dark:text-red-400 font-extrabold uppercase tracking-wider mb-1.5 flex items-center gap-1">
@@ -67,7 +69,6 @@ export default function HistoryList({ orders, onDelete, onView }: HistoryListPro
                  </div>
               )}
 
-              {/* Rejection Note */}
               {order.rejectionReason && !order.removedItems && (
                  <div className="mb-4 px-3 py-2.5 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-white/5">
                    <p className="text-[10px] text-slate-500 font-extrabold uppercase tracking-wider mb-0.5">Note</p>
@@ -75,14 +76,16 @@ export default function HistoryList({ orders, onDelete, onView }: HistoryListPro
                  </div>
               )}
 
-              {/* Actions */}
               <div className="grid grid-cols-3 gap-2 mt-auto">
-                 <button onClick={onView} className="flex flex-col items-center justify-center gap-1 py-2 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform active:scale-95 outline-none">
+                 <button onClick={() => onView(order.id)} className="flex flex-col items-center justify-center gap-1 py-2 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform active:scale-95 outline-none">
                    <EyeIcon className="h-4 w-4" /> <span className="text-[10px] font-bold">View</span>
                  </button>
-                 <button className="flex flex-col items-center justify-center gap-1 py-2 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform active:scale-95 outline-none">
-                   <DocumentTextIcon className="h-4 w-4" /> <span className="text-[10px] font-bold">Invoice</span>
+                 
+                 {/* 🚀 Calling the decoupled print engine */}
+                 <button onClick={() => printInvoice(order)} className="flex flex-col items-center justify-center gap-1 py-2 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-transform active:scale-95 outline-none">
+                   <PrinterIcon className="h-4 w-4" /> <span className="text-[10px] font-bold">Print</span>
                  </button>
+                 
                  <button onClick={() => onDelete(order.id)} className="flex flex-col items-center justify-center gap-1 py-2 rounded-xl bg-red-50 dark:bg-red-500/10 border border-red-100 dark:border-red-500/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-500/20 transition-transform active:scale-95 outline-none">
                    <TrashIcon className="h-4 w-4" /> <span className="text-[10px] font-bold">Delete</span>
                  </button>
@@ -99,7 +102,7 @@ export default function HistoryList({ orders, onDelete, onView }: HistoryListPro
         )}
       </div>
 
-      {/* 💻 DESKTOP VIEW (Laptops & Large Monitors Only) */}
+      {/* 💻 DESKTOP VIEW */}
       <div className="hidden lg:block overflow-x-auto w-full pb-10">
         <table className="w-full text-left border-collapse">
           <thead className="sticky top-0 z-10 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/80">
@@ -142,12 +145,15 @@ export default function HistoryList({ orders, onDelete, onView }: HistoryListPro
                   
                   <td className="p-4">
                     <div className="flex items-center justify-center gap-1">
-                      <button onClick={onView} className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400 rounded-lg transition-transform active:scale-95 outline-none" title="View Details">
+                      <button onClick={() => onView(order.id)} className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400 rounded-lg transition-transform active:scale-95 outline-none" title="View Details">
                         <EyeIcon className="h-5 w-5" />
                       </button>
-                      <button className="p-2 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 dark:hover:text-emerald-400 rounded-lg transition-transform active:scale-95 outline-none" title="Download Invoice">
-                        <DocumentTextIcon className="h-5 w-5" />
+                      
+                      {/* 🚀 Calling the decoupled print engine */}
+                      <button onClick={() => printInvoice(order)} className="p-2 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-500/10 dark:hover:text-emerald-400 rounded-lg transition-transform active:scale-95 outline-none" title="Print Invoice">
+                        <PrinterIcon className="h-5 w-5" />
                       </button>
+                      
                       <button onClick={() => onDelete(order.id)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 dark:hover:text-red-400 rounded-lg transition-transform active:scale-95 outline-none" title="Delete">
                         <TrashIcon className="h-5 w-5" />
                       </button>

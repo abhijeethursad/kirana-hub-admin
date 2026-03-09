@@ -9,6 +9,7 @@ import { Order } from "@/types/order";
 import HistoryToolbar from "./history/HistoryToolbar";
 import HistoryList from "./history/HistoryList";
 import DeleteRecordModal from "./history/DeleteRecordModal";
+import OrderDetailsModal from "./history/OrderDetailsModal"; // 🚀 NEW IMPORT
 
 interface OrdersTableProps {
   orders?: Order[]; 
@@ -25,6 +26,10 @@ export default function OrdersTable({ orders = [] }: OrdersTableProps) {
   const [statusFilter, setStatusFilter] = useState("All");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState<string | number | null>(null);
+  
+  // 🚀 NEW STATE: Holds the full order object when "View" is clicked
+  const [viewOrder, setViewOrder] = useState<Order | null>(null);
+  
   const [toast, setToast] = useState<{ msg: string, type: 'success' | 'error', show: boolean }>({ msg: '', type: 'success', show: false });
 
   const showToast = (msg: string, type: 'success' | 'error' = 'success') => {
@@ -36,7 +41,6 @@ export default function OrdersTable({ orders = [] }: OrdersTableProps) {
     return localOrders.filter((order) => {
       const matchesSearch = String(order.id).toLowerCase().includes(search.toLowerCase()) || order.customer.toLowerCase().includes(search.toLowerCase());
       const matchesStatus = statusFilter === "All" || order.status === statusFilter;
-      // Strict History Filter
       const isHistoryItem = ['Delivered', 'Cancelled', 'Refunded'].includes(order.status);
       return matchesSearch && matchesStatus && isHistoryItem;
     });
@@ -52,14 +56,13 @@ export default function OrdersTable({ orders = [] }: OrdersTableProps) {
       showToast("Order permanently deleted", "success");
     } catch (error) {
       console.warn("Mock server simulation:", error);
-      // We don't revert UI here to keep it smooth for Mock Server
     }
   };
 
   const handleExport = () => {
     const headers = ["ID", "Customer", "Amount", "Status", "Payment", "Date", "Reason", "Removed Items"];
     const rows = filteredOrders.map(o => [
-        o.id, o.customer, o.total, o.status, o.payment, o.timeAgo, o.rejectionReason || "",
+        o.id, o.customer, o.total, o.status, o.payment || "Cash", o.timeAgo, o.rejectionReason || "",
         o.removedItems?.map(i => `${i.name} (${i.reason})`).join("; ") || ""
     ]);
     
@@ -98,7 +101,12 @@ export default function OrdersTable({ orders = [] }: OrdersTableProps) {
       <HistoryList 
         orders={filteredOrders} 
         onDelete={(id) => { setDeleteTarget(id); setShowDeleteModal(true); }}
-        onView={() => showToast("View Details")}
+        
+        /* 🚀 FIXED: Finds the exact order object and passes it to the modal state */
+        onView={(id) => {
+          const selected = filteredOrders.find(o => o.id === id);
+          if (selected) setViewOrder(selected);
+        }}
       />
 
       {/* 3. Delete Modal */}
@@ -106,6 +114,13 @@ export default function OrdersTable({ orders = [] }: OrdersTableProps) {
         isOpen={showDeleteModal} 
         onClose={() => setShowDeleteModal(false)} 
         onDelete={handleDelete} 
+      />
+
+      {/* 4. 🚀 NEW: The Order Details Modal */}
+      <OrderDetailsModal 
+        isOpen={!!viewOrder} 
+        onClose={() => setViewOrder(null)} 
+        order={viewOrder} 
       />
 
     </div>
