@@ -20,6 +20,9 @@ export default function ProfileView() {
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState(false);
   
+  // 🚀 NEW: State to track when the initial entrance animation finishes
+  const [animationDone, setAnimationDone] = useState(false);
+  
   const [isEditing, setIsEditing] = useState(false);
   const [saveLoading, setSaveLoading] = useState(false);
   const [toast, setToast] = useState({ show: false, msg: "" });
@@ -49,6 +52,18 @@ export default function ProfileView() {
   useEffect(() => {
     fetchProfile();
   }, []);
+
+  // 🚀 FIXED: Cleanup Hook.
+  // After the data loads, we wait 1000ms for the slide-in animations to finish.
+  // Then we remove the transform classes so fixed modals (like the cropper) can escape the grid!
+  useEffect(() => {
+    if (!loading && user) {
+      const timer = setTimeout(() => {
+        setAnimationDone(true);
+      }, 1000); 
+      return () => clearTimeout(timer);
+    }
+  }, [loading, user]);
 
   // --- SAVE ACTIONS ---
   const handleSave = async () => {
@@ -95,17 +110,18 @@ export default function ProfileView() {
   }
 
   return (
-    // 🚀 Removed the monolithic wrapper animation so the elements can stagger independently
     <div className="space-y-6 pb-10 md:pb-0">
       
-      {/* 🚀 Injecting the premium physics curve for the whole page layout */}
+      {/* Premium physics curve for the whole page layout */}
       <style>{`
         @keyframes pageSlideUp { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
         .animate-stagger-page { opacity: 0; animation: pageSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
       `}</style>
 
-      {/* 🚀 Subtle Page Header - Leads the waterfall at 0ms */}
-      <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between px-2 sm:px-0 animate-stagger-page" style={{ animationDelay: '0ms' }}>
+      {/* 🚀 All wrappers now check `animationDone`. If true, they drop the restrictive animation class. */}
+      
+      {/* Subtle Page Header - Leads the waterfall at 0ms */}
+      <div className={`flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between px-2 sm:px-0 ${animationDone ? "" : "animate-stagger-page"}`} style={animationDone ? {} : { animationDelay: '0ms' }}>
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Profile Settings
@@ -125,7 +141,7 @@ export default function ProfileView() {
       </div>
 
       {/* 1. Header Section - Drops in at 100ms */}
-      <div className="animate-stagger-page" style={{ animationDelay: '100ms' }}>
+      <div className={animationDone ? "" : "animate-stagger-page"} style={animationDone ? {} : { animationDelay: '100ms' }}>
         <ProfileHeader 
           user={user} 
           setUser={setUser} 
@@ -138,10 +154,10 @@ export default function ProfileView() {
 
       {/* 2. Grid Content - Left side drops at 200ms, Right side drops at 300ms */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-         <div className="lg:col-span-2 animate-stagger-page" style={{ animationDelay: '200ms' }}>
+         <div className={`lg:col-span-2 ${animationDone ? "" : "animate-stagger-page"}`} style={animationDone ? {} : { animationDelay: '200ms' }}>
            <ProfileForm user={user} setUser={setUser} isEditing={isEditing} />
          </div>
-         <div className="space-y-6 animate-stagger-page" style={{ animationDelay: '300ms' }}>
+         <div className={`space-y-6 ${animationDone ? "" : "animate-stagger-page"}`} style={animationDone ? {} : { animationDelay: '300ms' }}>
            <ProfileStats />
            <ProfileActivity />
          </div>
