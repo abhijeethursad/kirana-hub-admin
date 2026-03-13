@@ -109,14 +109,14 @@ export default function OrderDetailsModal({ isOpen, onClose, order }: OrderDetai
       <div 
         ref={modalRef}
         style={{ transform: 'translateY(100%)' }} 
-        className="bg-slate-50 dark:bg-[#0A0A0C] w-full sm:w-[540px] max-h-[85vh] rounded-t-[2rem] sm:rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden ring-1 ring-slate-200 dark:ring-white/10 will-change-transform"
+        className="bg-slate-50 dark:bg-slate-900 w-full sm:w-[540px] max-h-[85vh] rounded-t-[2rem] sm:rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden ring-1 ring-slate-200 dark:ring-white/10 will-change-transform"
       >
         
         <div 
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
-          className="shrink-0 touch-none cursor-grab active:cursor-grabbing bg-white dark:bg-[#121418] z-20 relative"
+          className="shrink-0 touch-none cursor-grab active:cursor-grabbing bg-white dark:bg-slate-800 z-20 relative"
         >
           <div className="w-full pt-4 pb-1.5 flex justify-center sm:hidden">
             <div className="w-12 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
@@ -133,16 +133,16 @@ export default function OrderDetailsModal({ isOpen, onClose, order }: OrderDetai
               </div>
             </div>
             
-            <button onClick={triggerClose} className="h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-500 dark:text-slate-400 transition-transform active:scale-90 outline-none z-30 relative cursor-pointer">
+            <button onClick={triggerClose} className="h-9 w-9 sm:h-10 sm:w-10 flex items-center justify-center rounded-full bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/20 text-slate-500 dark:text-slate-400 transition-transform active:scale-90 outline-none z-30 relative cursor-pointer">
               <XMarkIcon className="h-5 w-5" />
             </button>
           </div>
         </div>
 
-        <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar bg-slate-50/50 dark:bg-[#0A0A0C]">
+        <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar bg-slate-50/50 dark:bg-slate-900">
           <div className="p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 pb-24 sm:pb-10">
             
-            <div className="flex items-center gap-3 sm:gap-4 bg-white dark:bg-[#121418] p-3.5 sm:p-4 rounded-[1.5rem] border border-slate-200/60 dark:border-white/5 shadow-sm">
+            <div className="flex items-center gap-3 sm:gap-4 bg-white dark:bg-slate-800 p-3.5 sm:p-4 rounded-[1.5rem] border border-slate-200/60 dark:border-white/5 shadow-sm">
               <div className="h-12 w-12 sm:h-14 sm:w-14 shrink-0 rounded-full bg-gradient-to-tr from-indigo-100 to-slate-50 dark:from-indigo-500/20 dark:to-slate-800 border border-indigo-200/50 dark:border-indigo-500/20 flex items-center justify-center font-black text-lg sm:text-xl text-indigo-700 dark:text-indigo-300 shadow-inner">
                 {order.customer.charAt(0)}
               </div>
@@ -156,7 +156,7 @@ export default function OrderDetailsModal({ isOpen, onClose, order }: OrderDetai
             </div>
 
             <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              <div className="bg-white dark:bg-[#121418] p-3.5 sm:p-4 rounded-[1.5rem] border border-slate-200/60 dark:border-white/5 shadow-sm flex flex-col gap-1.5 min-w-0">
+              <div className="bg-white dark:bg-slate-800 p-3.5 sm:p-4 rounded-[1.5rem] border border-slate-200/60 dark:border-white/5 shadow-sm flex flex-col gap-1.5 min-w-0">
                 <div className="flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest truncate">
                   <div className="p-1 rounded-md bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 shrink-0">
                     <ClockIcon className="h-3 w-3" />
@@ -165,7 +165,7 @@ export default function OrderDetailsModal({ isOpen, onClose, order }: OrderDetai
                 </div>
                 <p className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-200 pl-1 truncate">{order.timeAgo}</p>
               </div>
-              <div className="bg-white dark:bg-[#121418] p-3.5 sm:p-4 rounded-[1.5rem] border border-slate-200/60 dark:border-white/5 shadow-sm flex flex-col gap-1.5 min-w-0">
+              <div className="bg-white dark:bg-slate-800 p-3.5 sm:p-4 rounded-[1.5rem] border border-slate-200/60 dark:border-white/5 shadow-sm flex flex-col gap-1.5 min-w-0">
                 <div className="flex items-center gap-1.5 sm:gap-2 text-[9px] sm:text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest truncate">
                   <div className="p-1 rounded-md bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 shrink-0">
                     <CreditCardIcon className="h-3 w-3" />
@@ -181,7 +181,7 @@ export default function OrderDetailsModal({ isOpen, onClose, order }: OrderDetai
                 <ShoppingBagIcon className="h-4 w-4" /> Order Summary
               </h4>
               
-              <div className="bg-white dark:bg-[#121418] rounded-3xl sm:rounded-[2rem] shadow-sm border border-slate-200/60 dark:border-white/5 relative">
+              <div className="bg-white dark:bg-slate-800 rounded-3xl sm:rounded-[2rem] shadow-sm border border-slate-200/60 dark:border-white/5 relative">
                 <div className="p-1.5 sm:p-2">
                   {order.items.map((item, idx) => (
                     <div key={idx} className="flex justify-between items-center p-2.5 sm:p-4 rounded-[1rem] sm:rounded-2xl hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors group">
@@ -198,9 +198,9 @@ export default function OrderDetailsModal({ isOpen, onClose, order }: OrderDetai
                 </div>
 
                 <div className="relative h-6 w-full flex items-center justify-center overflow-hidden">
-                  <div className="absolute w-full border-t-[1.5px] border-dashed border-slate-200 dark:border-slate-800"></div>
-                  <div className="absolute -left-3 h-6 w-6 rounded-full bg-slate-50 dark:bg-[#0A0A0C] border border-slate-200 dark:border-white/5 shadow-inner z-10"></div>
-                  <div className="absolute -right-3 h-6 w-6 rounded-full bg-slate-50 dark:bg-[#0A0A0C] border border-slate-200 dark:border-white/5 shadow-inner z-10"></div>
+                  <div className="absolute w-full border-t-[1.5px] border-dashed border-slate-200 dark:border-slate-700"></div>
+                  <div className="absolute -left-3 h-6 w-6 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-inner z-10"></div>
+                  <div className="absolute -right-3 h-6 w-6 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-inner z-10"></div>
                 </div>
 
                 <div className="px-5 py-4 sm:p-6 flex items-center justify-between bg-slate-50/50 dark:bg-white/[0.02] rounded-b-3xl sm:rounded-b-[2rem]">
