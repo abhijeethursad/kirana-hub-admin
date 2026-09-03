@@ -18,7 +18,7 @@ export default function SidebarMenu({ menuItems, pathname, setMobileOpen }: Side
           Main Menu
         </p>
         {/* 🚀 Removed transition-all duration-300 from the divider */}
-        <div className="h-px flex-1 bg-gradient-to-r from-slate-200 to-transparent dark:from-slate-700 to-transparent"></div>
+        <div className="h-px flex-1 bg-linear-to-r from-slate-200 to-transparent dark:from-slate-700"></div>
       </div>
       
       {menuItems.map((item) => {
@@ -32,7 +32,7 @@ export default function SidebarMenu({ menuItems, pathname, setMobileOpen }: Side
             className={`
               group flex items-center justify-between rounded-2xl px-5 py-3.5 text-sm font-bold relative overflow-hidden outline-none
               ${isActive 
-                ? "text-indigo-700 dark:text-indigo-300 bg-gradient-to-r from-indigo-500/15 via-indigo-500/5 to-transparent" 
+                ? "text-indigo-700 dark:text-indigo-300 bg-linear-to-r from-indigo-500/15 via-indigo-500/5 to-transparent" 
                 : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/40 hover:text-slate-800 dark:hover:text-slate-200"
               }
             `}
@@ -40,7 +40,7 @@ export default function SidebarMenu({ menuItems, pathname, setMobileOpen }: Side
             {/* 1. Premium Glowing Neon Indicator */}
             {/* 🚀 Swapped transition-all to transition-[transform,opacity] */}
             <div 
-              className={`absolute left-0 top-2 bottom-2 w-1.5 rounded-r-full bg-gradient-to-b from-indigo-500 to-purple-500 shadow-[0_0_12px_rgba(99,102,241,0.6)] transition-[transform,opacity] duration-300 ease-out ${
+              className={`absolute left-0 top-2 bottom-2 w-1.5 rounded-r-full bg-linear-to-b from-indigo-500 to-purple-500 shadow-[0_0_12px_rgba(99,102,241,0.6)] transition-[transform,opacity] duration-300 ease-out ${
                 isActive ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"
               }`} 
             />

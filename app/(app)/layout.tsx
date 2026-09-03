@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Sidebar from "@/components/layout/sidebar/Sidebar"; 
 import Header from "@/components/layout/header/Header"; 
+import GlobalSync from "@/components/GlobalSync"; // 🚀 Import the Master Sync Engine
 
 export default function AdminLayout({
   children,
@@ -14,6 +15,9 @@ export default function AdminLayout({
   return (
     <div className="flex h-screen overflow-hidden">
       
+      {/* 🚀 The Master Sync Engine (Invisible, runs globally across all pages) */}
+      <GlobalSync />
+
       <Sidebar mobileOpen={sidebarOpen} setMobileOpen={setSidebarOpen} />
 
       <div className="flex-1 flex flex-col min-w-0 transition-all duration-300 ease-in-out lg:ml-72">

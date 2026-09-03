@@ -196,6 +196,7 @@ export default function InventoryPage() {
            <InventorySkeleton />
         </div>
       ) : (
+        
         // Real Container
         <div className="relative bg-white dark:bg-slate-900 rounded-3xl md:border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col transform-gpu">
           <InventoryHeader 
