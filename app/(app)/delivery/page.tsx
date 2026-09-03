@@ -13,6 +13,9 @@ import DeliveryList from "@/components/modals/delivery/DeliveryList";
 import RunnerModal from "@/components/modals/delivery/RunnerModal";
 import DeleteRunnerModal from "@/components/modals/delivery/DeleteRunnerModal";
 
+// ✅ Added the RunnerStatus type definition here to fix the build error
+type RunnerStatus = "Available" | "Busy" | "Offline";
+
 const TrackingMap = dynamic(() => import("@/components/modals/delivery/TrackingMap"), { ssr: false, loading: () => <div className="w-full h-[500px] bg-slate-100 dark:bg-slate-800 rounded-3xl animate-pulse"></div> });
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;

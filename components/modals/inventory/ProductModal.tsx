@@ -103,12 +103,10 @@ export default function ProductModal({
                 
                 <div className="relative z-50">
                   <label className="block text-[11px] md:text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">Category</label>
-                  {/* 🚀 ADDED placement="top" HERE */}
                   <CustomSelect 
                     value={formData.category || ""} 
                     onChange={(val) => setFormData(prev => ({...prev, category: val}))} 
                     options={CATEGORIES} 
-                    placement="top" 
                   />
                 </div>
                 

@@ -144,7 +144,7 @@ export default function ProfileView() {
       <div className={animationDone ? "" : "animate-stagger-page"} style={animationDone ? {} : { animationDelay: '100ms' }}>
         <ProfileHeader 
           user={user} 
-          setUser={setUser} 
+          setUser={setUser as any} 
           isEditing={isEditing} 
           setIsEditing={setIsEditing} 
           onSave={handleSave} 
@@ -155,7 +155,7 @@ export default function ProfileView() {
       {/* 2. Grid Content - Left side drops at 200ms, Right side drops at 300ms */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
          <div className={`lg:col-span-2 ${animationDone ? "" : "animate-stagger-page"}`} style={animationDone ? {} : { animationDelay: '200ms' }}>
-           <ProfileForm user={user} setUser={setUser} isEditing={isEditing} />
+           <ProfileForm user={user} setUser={setUser as any} isEditing={isEditing} />
          </div>
          <div className={`space-y-6 ${animationDone ? "" : "animate-stagger-page"}`} style={animationDone ? {} : { animationDelay: '300ms' }}>
            <ProfileStats />

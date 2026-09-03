@@ -137,7 +137,7 @@ export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
             setShowNotifications(!showNotifications);
             setShowProfileMenu(false);
           }}
-          dropdownRef={notificationRef}
+          dropdownRef={notificationRef as any}
           onMarkAllRead={markAllAsRead}
           onDelete={deleteNotification}
           onClickItem={handleNotificationClick}
@@ -161,7 +161,7 @@ export default function Header({ onMenuClick }: { onMenuClick: () => void }) {
               setShowProfileMenu(!showProfileMenu);
               setShowNotifications(false);
             }}
-            dropdownRef={profileRef}
+            dropdownRef={profileRef as any}
             profile={profile}
           />
         )}

@@ -7,7 +7,12 @@ export const printInvoice = (order: Order) => {
     return;
   }
 
-  const totalNum = typeof order.total === 'string' ? parseFloat(order.total.replace(/,/g, '') || '0') : typeof order.total === 'number' ? order.total : 0;
+  const totalNum = typeof order.total === 'string' 
+    ? parseFloat((order.total as any).replace(/,/g, '') || '0') 
+    : typeof order.total === 'number' 
+      ? order.total 
+      : parseFloat(String(order.total || '0').replace(/,/g, '')) || 0;
+      
   const subtotal = (totalNum / 1.18).toFixed(2);
   const taxAmount = (totalNum - parseFloat(subtotal)).toFixed(2);
 
