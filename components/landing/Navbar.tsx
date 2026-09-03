@@ -1,32 +1,32 @@
 "use client";
 import Link from "next/link";
+import { Store, ShieldCheck } from "lucide-react";
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-md bg-black/20 border-b border-white/5">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-xl bg-[#030712]/80 border-b border-white/[0.08]">
       {/* Logo */}
-      <div className="flex items-center gap-2">
-        <div className="h-8 w-8 rounded-lg bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-500/50">
-          <span className="text-white font-bold">K</span>
+      <Link href="/" className="flex items-center gap-2.5 group outline-none">
+        <div className="h-9 w-9 rounded-xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-600/30 group-hover:scale-105 transition-transform">
+          <Store className="h-5 w-5 text-white" />
         </div>
-        <span className="text-xl font-bold text-white tracking-wide">Kirana Hub</span>
-      </div>
+        <span className="text-xl font-bold text-white tracking-tight">Kirana Hub</span>
+      </Link>
 
-      {/* Links (Hidden on Mobile) */}
-      <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <Link href="#features" className="hover:text-white transition-colors">Features</Link>
-        <Link href="#testimonials" className="hover:text-white transition-colors">Testimonials</Link>
-        <Link href="#pricing" className="hover:text-white transition-colors">Pricing</Link>
+      {/* Role Badge (Hidden on Mobile) */}
+      <div className="hidden md:flex items-center gap-2 text-xs font-semibold text-slate-400 bg-white/[0.03] border border-white/[0.06] px-4 py-2 rounded-full backdrop-blur-md">
+        <ShieldCheck className="h-4 w-4 text-indigo-400" />
+        <span className="text-slate-300">Authorized Merchant Portal</span>
       </div>
 
       {/* Auth Buttons */}
       <div className="flex items-center gap-4">
-        <Link href="/login" className="text-sm font-medium text-white hover:text-indigo-400 transition-colors">
+        <Link href="/login" className="text-sm font-semibold text-slate-300 hover:text-white transition-colors">
           Login
         </Link>
         <Link 
-          href="/signup" 
-          className="px-5 py-2 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold shadow-lg shadow-indigo-500/30 transition-all hover:scale-105"
+          href="/login" 
+          className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold shadow-lg shadow-indigo-600/25 transition-all hover:scale-105 active:scale-95"
         >
           Get Started
         </Link>
