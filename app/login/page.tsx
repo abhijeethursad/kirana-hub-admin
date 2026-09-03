@@ -19,7 +19,7 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ email: "abhi@gmail.com", password: "password" });
   const [error, setError] = useState("");
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -101,7 +101,8 @@ export default function LoginPage() {
                    name="email"
                    type="email" 
                    autoComplete="email"
-                   value={formData.email}
+                  //  value={formData.email}
+                  value="abhi@gmail.com"
                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                    className="block w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-2xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all font-medium"
                    placeholder="admin@kiranahub.com"
@@ -122,7 +123,8 @@ export default function LoginPage() {
                    name="password"
                    type={showPassword ? "text" : "password"} 
                    autoComplete="current-password"
-                   value={formData.password}
+                  //  value={formData.password}
+                  value="password"
                    onChange={(e) => setFormData({...formData, password: e.target.value})}
                    className="block w-full pl-12 pr-12 py-4 bg-slate-50 dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-2xl text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 outline-none transition-all font-medium"
                    placeholder="••••••••"
