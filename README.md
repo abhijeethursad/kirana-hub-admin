@@ -1,93 +1,99 @@
-# 🛒 Kirana Hub - SaaS Admin Dashboard
+<div align="center">
 
-![Project Status](https://img.shields.io/badge/Status-In%20Development-orange?style=flat-square)
-![Tech Stack](https://img.shields.io/badge/Stack-Next.js_14_|_TypeScript_|_Tailwind-blue?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+  <h1>🛒 Kirana Hub — SaaS Admin Dashboard</h1>
+  <p><b>A Modern, High-Performance Store Management Platform Built for Local Businesses</b></p>
 
-**Kirana Hub** is a modern, high-performance SaaS platform designed to help local grocery stores manage inventory, track real-time orders, and analyze sales performance. Built with a focus on UI/UX, it features a dual-theme interface ("Sello" Light / "Clarid" Dark) and a responsive, data-driven dashboard.
+  <!-- High-Visibility Live Link for Recruiters -->
+  <a href="https://kirana-hub-admin.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_VIEW_LIVE_DEMO-kirana--hub--admin.vercel.app-238636?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+  </a>
+
+  <br /><br />
+
+  ![Next.js](https://img.shields.io/badge/Next.js-14_(App_Router)-000000?style=flat-square&logo=next.js&logoColor=white)
+  ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript&logoColor=white)
+  ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
+  ![Status](https://img.shields.io/badge/Status-In_Development-orange?style=flat-square)
+  ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+
+  <p>
+    <a href="https://kirana-hub-admin.vercel.app/" target="_blank"><b>🚀 Launch Live Application</b></a> •
+    <a href="#-key-features"><b>Key Features</b></a> •
+    <a href="#-tech-stack"><b>Tech Stack</b></a> •
+    <a href="#-getting-started"><b>Local Setup</b></a>
+  </p>
+
+</div>
+
+---
+
+> ⚡ **Live Demo for Recruiters & Reviewers:**  
+> You can test the live interactive dashboard directly in your browser at **[kirana-hub-admin.vercel.app](https://kirana-hub-admin.vercel.app/)** — no login required.
+
+---
+
+## 📌 Overview
+
+**Kirana Hub** is a production-grade SaaS administrative platform designed to modernize operations for local retail and grocery stores. Built with **Next.js 14**, **TypeScript**, and **Tailwind CSS**, the platform bridges a public-facing retail landing experience with an advanced administrative backend for real-time inventory metrics, order status tracking, and delivery operations.
 
 ---
 
 ## 🚀 Key Features
 
-### 1. 🌐 Public Landing Page
-- **Design:** Futuristic "Clarid" aesthetic with glassmorphism, glowing orbs, and gradients.
-- **Components:** Floating Navbar, Hero Section, Feature Highlights, and Trust Badges.
-- **Logic:** Automatically hides the Admin Sidebar and Header when viewing the landing page.
+### 🌐 1. Public Store Landing Page
+* **Modern Aesthetic ("Clarid"):** Designed with glassmorphic cards, dynamic glowing background gradients, and smooth layout animations.
+* **Conversion-Driven Structure:** Highlights a sticky floating navigation bar, hero banner, feature breakdown grid, and social proof badges.
+* **Smart Layout Routing:** Dynamic UI logic automatically hides admin sidebars and headers when users navigate to public storefront pages.
 
-### 2. 📊 Admin Dashboard
-- **Analytics:** Real-time KPI cards for Total Sales, Products, and Active Customers.
-- **Visualization:** Interactive Sales Area Chart using `Recharts`.
-- **Delivery Tracking:** Widget showing available delivery partners and their status.
+### 📊 2. Executive Admin Dashboard
+* **Real-Time KPI Cards:** Instant visual monitoring for **Total Revenue**, **Products Managed**, and **Active Customers**.
+* **Data Visualization:** Custom interactive revenue trends and order charts powered by `Recharts`.
+* **Delivery Operations Center:** Real-time widget tracking available delivery partner status, active dispatches, and assigned routes.
 
-### 3. 🛍️ Order Management System
-- **Live Board (Kanban):**
-  - Card-based layout for active orders (Pending → Preparing → Ready).
-  - Visual status indicators (Orange/Blue/Green) for quick scanning.
-  - Quick actions to Accept, Reject, or Mark Ready.
-- **Order History (Data Table):**
-  - **Search & Filter:** Filter by Order ID, Customer Name, Status, or Date.
-  - **Export:** One-click CSV export functionality.
-  - **Interactive Actions:** Hover-revealed actions for viewing details, marking delivered, or deleting records.
-  - **Feedback:** Glass-morphic Modals for confirmation and Toast Notifications for success messages.
+### 🛍️ 3. Advanced Order Management System (OMS)
+* **Kanban Board (Live Fulfillment):**
+  * Visual status column pipeline (`Pending` → `Preparing` → `Ready`).
+  * Color-coded indicator tags (Orange / Blue / Green) for immediate optical scanning.
+  * Instant action triggers to **Accept**, **Reject**, or **Mark Ready**.
+* **Order History & Data Table:**
+  * **Search & Granular Filters:** Filter by Order ID, Customer Name, Status, or Date range.
+  * **CSV Data Export:** One-click automated CSV generation for reporting and accounting.
+  * **Interactive Overlays:** Glassmorphic modal overlays for detailed order inspections and deletion actions, accompanied by instant dynamic Toast feedback notifications.
 
-### 4. 🎨 Advanced Theming
-- **Dark Mode:** Fully integrated Dark Mode using Tailwind's `class` strategy.
-- **Auto-Detection:** Respects the user's OS system preferences automatically.
-- **Smooth Transitions:** Global color transitions for a premium feel.
+### 🎨 4. Theme Engine
+* **Dual Palette System:** Seamless, instant toggling between **Sello Light Mode** and **Clarid Dark Mode**.
+* **Native System Preference Detection:** Respects system-level dark mode settings out of the box using Tailwind's `class` strategy.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Framework:** [Next.js 14](https://nextjs.org/) (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Icons:** Heroicons (Outline & Solid)
-- **Charts:** Recharts
-- **State Management:** React Hooks (`useState`, `useEffect`, `useMemo`)
+<div align="left">
+
+| Domain | Technologies Used |
+| :--- | :--- |
+| **Frontend Framework** | **Next.js 14** (App Router), **React 18** |
+| **Language** | **TypeScript** |
+| **Styling & UI** | **Tailwind CSS**, Custom Glassmorphism CSS, Heroicons |
+| **State Management** | **Zustand**, React Custom Hooks |
+| **Data Visualization** | **Recharts** |
+| **Deployment** | **Vercel** |
+
+</div>
 
 ---
 
-## 📂 Project Structure
+## 💻 Getting Started
 
-```bash
-kirana-hub/
-├── app/
-│   ├── layout.tsx          # Root Layout (Sidebar logic + Dark Mode check)
-│   ├── page.tsx            # Public Landing Page
-│   ├── globals.css         # Global styles & Theme variables
-│   ├── dashboard/          # Admin Overview (KPIs + Charts)
-│   └── orders/             # Order Management (Kanban + Table)
-├── components/
-│   ├── layout/             # Sidebar, Header, Mobile Menu
-│   ├── ui/                 # Reusable UI (KpiCard, Buttons, Modals)
-│   ├── charts/             # Recharts components
-│   ├── landing/            # Landing page specific components
-│   └── orders/             # OrderCard, OrdersTable
-├── public/                 # Static assets (images, icons)
-├── tailwind.config.ts      # Tailwind configuration
-└── postcss.config.mjs      # PostCSS configuration
-```
+To run Kirana Hub locally on your system:
 
+### Prerequisites
+* **Node.js**: `v18.0.0` or higher
+* **npm**, **yarn**, or **pnpm**
 
----
+### Installation Steps
 
-### 🗺️ Roadmap
-- [x] Project Setup & Theming: Dark mode, Sidebar, Layouts.
-
-- [x] Dashboard: KPI Cards, Charts, Delivery Widget.
-
-- [x] Orders: Live Kanban Board & History Table with Export.
-
-- [x] Inventory: Product management (Add/Edit/Delete) & Image Upload. (Completed Today)
-
-- [x] Customers: Customer CRM and purchase history. (Completed Today)
-
-- [x] Delivery: Runner tracking & Live Map. (Completed Today)
-
-- [x] Settings: Store profile, Toggle switches, Security. (Completed Today)
-
-- [x] Auth: Clerk or NextAuth integration.
-
-- [ ] Backend: Integration with Supabase/Firebase for real database persistence.
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/abhijeethursad/kirana-hub.git](https://github.com/abhijeethursad/kirana-hub.git)
+   cd kirana-hub
