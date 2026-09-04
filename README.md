@@ -27,8 +27,9 @@
 
 ---
 
-> ⚡ **Live Demo for Recruiters & Reviewers:**  
-> You can test the live interactive dashboard directly in your browser at **[kirana-hub-admin.vercel.app](https://kirana-hub-admin.vercel.app/)** — no login required.
+> ⚡ **Live Demo Access for Recruiters & Reviewers:**  
+> Visit **[kirana-hub-admin.vercel.app](https://kirana-hub-admin.vercel.app/)** to explore the platform.  
+> 🔑 **Access Note:** Public registration is disabled by design—admin accounts are provisioned exclusively by the Master Admin. For quick testing, **demo credentials are pre-filled on the login screen**. Simply click **"Login"** to jump straight into the admin dashboard!
 
 ---
 
@@ -40,17 +41,21 @@
 
 ## 🚀 Key Features
 
-### 🌐 1. Public Store Landing Page
+### 🔒 1. Managed Access & Authentication
+* **Master Admin Provisioning:** Public sign-up is disabled to protect store network security. Admin accounts (Store Owners) are created strictly via Master Admin controls.
+* **Streamlined Recruiter Demo:** Login form comes pre-populated with active demo credentials for one-click testing without manual typing.
+
+### 🌐 2. Public Store Landing Page
 * **Modern Aesthetic ("Clarid"):** Designed with glassmorphic cards, dynamic glowing background gradients, and smooth layout animations.
 * **Conversion-Driven Structure:** Highlights a sticky floating navigation bar, hero banner, feature breakdown grid, and social proof badges.
 * **Smart Layout Routing:** Dynamic UI logic automatically hides admin sidebars and headers when users navigate to public storefront pages.
 
-### 📊 2. Executive Admin Dashboard
+### 📊 3. Executive Admin Dashboard
 * **Real-Time KPI Cards:** Instant visual monitoring for **Total Revenue**, **Products Managed**, and **Active Customers**.
 * **Data Visualization:** Custom interactive revenue trends and order charts powered by `Recharts`.
 * **Delivery Operations Center:** Real-time widget tracking available delivery partner status, active dispatches, and assigned routes.
 
-### 🛍️ 3. Advanced Order Management System (OMS)
+### 🛍️ 4. Advanced Order Management System (OMS)
 * **Kanban Board (Live Fulfillment):**
   * Visual status column pipeline (`Pending` → `Preparing` → `Ready`).
   * Color-coded indicator tags (Orange / Blue / Green) for immediate optical scanning.
@@ -60,7 +65,7 @@
   * **CSV Data Export:** One-click automated CSV generation for reporting and accounting.
   * **Interactive Overlays:** Glassmorphic modal overlays for detailed order inspections and deletion actions, accompanied by instant dynamic Toast feedback notifications.
 
-### 🎨 4. Theme Engine
+### 🎨 5. Theme Engine
 * **Dual Palette System:** Seamless, instant toggling between **Sello Light Mode** and **Clarid Dark Mode**.
 * **Native System Preference Detection:** Respects system-level dark mode settings out of the box using Tailwind's `class` strategy.
 
